@@ -1,0 +1,16 @@
+.block {
+    margin: 10px;
+    min-width: 200px;
+    min-height: 300px;
+    background-color: #202020;
+    border-radius: 33px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.link {
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+}

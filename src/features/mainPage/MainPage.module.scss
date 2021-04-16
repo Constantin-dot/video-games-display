@@ -1,0 +1,23 @@
+.block {
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.heading {
+    font-size: 72px;
+    line-height: 74px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+.gameBlock {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
