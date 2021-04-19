@@ -6,8 +6,8 @@ import classes from "./App.module.scss"
 const App = () => {
     return <div className={classes.display}>
         <Switch>
-            <Route path={'/'} exact component={MainPage} />
-            <Route path={'/game'} component={GamePage} />
+            <Route path={'/'} exact render={() => <MainPage/>} />
+            <Route path={'/game/:slug'} render={() => <GamePage/>} />
             <Route path={'*'} render={ () => <div>404 NOT FOUND</div>} />
         </Switch>
     </div>
