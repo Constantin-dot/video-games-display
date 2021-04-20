@@ -1,12 +1,8 @@
 import axios from "axios"
-
-const API_KEY = process.env.APP_API
-
 const instance = axios.create({
-    withCredentials: true,
     baseURL: "https://api.rawg.io/api",
     params: {
-        api_key: API_KEY
+        key: "79d35934fcc04ca2ab10df0014b83ba0" 
     }
 })
 

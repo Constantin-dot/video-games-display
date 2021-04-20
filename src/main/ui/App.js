@@ -1,9 +1,19 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Switch, Route } from "react-router-dom"
 import { GamePage } from "../../features/GamePage";
 import { MainPage } from "../../features/mainPage/MainPage";
+import { fetchGames } from "../bll/reducer";
 import classes from "./App.module.scss"
 
 const App = () => {
+    const dispatch = useDispatch()
+
+    useEffect( () => {
+        dispatch(fetchGames())
+        // eslint-disable-next-line
+    }, [])
+        
     return <div className={classes.display}>
         <Switch>
             <Route path={'/'} exact render={() => <MainPage/>} />
@@ -14,5 +24,3 @@ const App = () => {
 }
 
 export default App
-
-// const APIKey = '79d35934fcc04ca2ab10df0014b83ba0'
