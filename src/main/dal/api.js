@@ -14,5 +14,6 @@ export const gameAPI = {
                 page_size
             }
         })
-    }
+    },
+    
 }
