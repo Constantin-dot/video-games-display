@@ -1,6 +1,7 @@
-import classes from "./Game.module.scss"
+import React from 'react';
+import classes from "./Game.module.scss";
 
-export const Game = (props) => {
+export const Game = React.memo((props) => {
     return <div className={classes.block}>
         <img 
             src={props.background}
@@ -21,4 +22,4 @@ export const Game = (props) => {
         </div>
         {/* <NavLink to={'/game'} className={classes.link}>OPEN</NavLink> */}
     </div>
-}
+})

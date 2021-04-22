@@ -1,18 +1,18 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+// import { useEffect } from "react";
+// import { useDispatch } from "react-redux";
 import { Switch, Route } from "react-router-dom"
 import { GamePage } from "../../features/GamePage";
 import { MainPage } from "../../features/mainPage/MainPage";
-import { fetchGames } from "../bll/reducer";
+// import { fetchGames } from "../bll/reducer";
 import classes from "./App.module.scss"
 
 const App = () => {
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
-    useEffect( () => {
-        dispatch(fetchGames())
-        // eslint-disable-next-line
-    }, [])
+    // useEffect( () => {
+    //     dispatch(fetchGames())
+    //     // eslint-disable-next-line
+    // }, [])
         
     return <div className={classes.display}>
         <Switch>
