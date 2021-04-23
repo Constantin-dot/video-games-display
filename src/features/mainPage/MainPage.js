@@ -1,36 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchGames } from "../../main/bll/reducer";
+import React from "react";
 import { Game } from "../../main/ui/common/game/Game";
+import { MoreGAmes } from "../../main/ui/common/moreGames/MoreGames";
 import classes from "./MainPage.module.scss";
 
-export const MainPage = React.memo(() => {
-    const dispatch = useDispatch();
-    
-    const [fetching, setFetching] = useState(true);
-
-    const {games} = useSelector(state => state.games);
-
-    const scrollHandler = (e) => {
-        if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100) {
-            setFetching(true);
-        };
-    };
-
-    useEffect( () => {
-        debugger
-        dispatch(fetchGames());
-        setFetching(false);
-        // eslint-disable-next-line
-    }, [fetching]);
-
-    useEffect( () => {
-        document.addEventListener('scroll', scrollHandler)
-        return () => {
-            document.removeEventListener('scroll', scrollHandler)
-        }
-        // eslint-disable-next-line
-    }, []);
+export const MainPage = React.memo(({games, isAddGames, getMoreGames}) => {
 
     return <div className={classes.block}>
         <h1 className={classes.heading}>Game display</h1>
@@ -44,6 +17,7 @@ export const MainPage = React.memo(() => {
                     added={g.added}
                 />)
             }
+            <MoreGAmes isAddGames={isAddGames} getMoreGames={getMoreGames} />
         </div>
     </div>
 })
