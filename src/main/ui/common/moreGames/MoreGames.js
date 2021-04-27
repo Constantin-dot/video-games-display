@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
-export const MoreGAmes = React.memo(({isAddGames, getMoreGames}) => {
+export const MoreGames = React.memo(({isAddGames, getMoreGames}) => {
     const ref = useRef();
     const refCurrent = ref.current;
 

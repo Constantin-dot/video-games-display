@@ -12,7 +12,14 @@
     line-height: 74px;
     font-weight: 700;
     text-align: center;
-  }
+}
+
+.funcHeader {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .gameBlock {
     width: 100%;

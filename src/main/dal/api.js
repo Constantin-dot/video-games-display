@@ -15,5 +15,13 @@ export const gameAPI = {
             }
         })
     },
-    
+    searchGames(page, page_size, search) {
+        return instance.get(`games`, {
+            params: {
+                page,
+                page_size,
+                search
+            }
+        })
+    }
 }

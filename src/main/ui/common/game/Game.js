@@ -9,15 +9,12 @@ export const Game = React.memo((props) => {
             className={classes.back}
         />
         <div className={classes.description}>
-            <div className={classes.platformsAndRating}>
-                <div className={classes.rating}>{props.rating}</div>
-            </div>
             <div className={classes.heading4}>
                 {props.name}
             </div>
-            <div className={classes.added}>
-                &#43;
-                {props.added}
+            <div className={classes.releasedAndRating}>
+                <div className={classes.released}>{props.released}</div>
+                {props.rating && <div className={classes.rating}>{props.rating}</div>}
             </div>
         </div>
         {/* <NavLink to={'/game'} className={classes.link}>OPEN</NavLink> */}

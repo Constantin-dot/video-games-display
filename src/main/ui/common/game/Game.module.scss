@@ -1,7 +1,6 @@
 .block {
     margin: 15px;
     max-width: 348px;
-    min-height: 285px;
     background-color: #202020;
     border-radius: 33px;
     
@@ -26,18 +25,17 @@
     align-items: flex-start;
 }
 
-.platformsAndRating {
-    margin-top: 10px;
+.releasedAndRating {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
 }
 
 .rating {
     padding: 0 5px;
-    color: #5fab41;
-    border: 1px solid #5fab41;
+    color: #ffffff;
+    border: 1px solid #ffffff;
     border-radius: 3px;
     font-weight: bold;
 }
@@ -52,7 +50,7 @@
     justify-content: flex-start;
 }
 
-.added {
+.released {
     margin-top: 10px;
     margin-bottom: 20px;
     background-color: #373737;
