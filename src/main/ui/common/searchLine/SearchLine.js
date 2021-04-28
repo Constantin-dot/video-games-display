@@ -1,30 +1,24 @@
 import classes from "./SearchLine.module.scss";
-import { useEffect, useState } from "react"
-import { useDispatch } from "react-redux";
-import { searchGames } from "../../../bll/reducer";
 
-export const SearchLine = () => {
-    const dispatch = useDispatch();
+export const SearchLine = ({lineValue, setLineValue}) => {
+    const setLineValueHandler = (e) => {
+        setLineValue(e.target.value);
+    };
 
-    const [lineValue, setLineValue] = useState("");
-
-    useEffect( () => {
-        debugger
-        dispatch(searchGames(lineValue));
-        console.log(lineValue);
-        // eslint-disable-next-line
-    }, [lineValue])
+    const clearLineHandler = () => {
+        setLineValue("");
+    };
 
     return <div className={classes.lineBlock}>
         <input 
             className={classes.lineInput}
             type={'text'}
             value={lineValue}
-            onChange={(e) => {setLineValue(e.target.value)}}
+            onChange={setLineValueHandler}
         />
         <button 
             className={classes.lineButton}
-            onClick={() => setLineValue("")}
+            onClick={clearLineHandler}
         >
            &times; 
         </button>

@@ -1,8 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
-export const MoreGames = React.memo(({isAddGames, getMoreGames}) => {
+export const MoreGames = ({isAddGames, getMoreGames}) => {
     const ref = useRef();
-    const refCurrent = ref.current;
 
     useEffect( () => {
         const observer = new IntersectionObserver(
@@ -18,19 +17,17 @@ export const MoreGames = React.memo(({isAddGames, getMoreGames}) => {
             }
         );
 
-        if (refCurrent) {
-            observer.observe(refCurrent);
+        if (ref.current) {
+            observer.observe(ref.current);
         }
 
         return () => {
-            if (refCurrent) {
-                observer.unobserve(refCurrent);
+            if (ref.current) {
+                observer.unobserve(ref.current);
             }
         };
         // eslint-disable-next-line
     }, [ref, isAddGames, getMoreGames]);
 
-    return <>
-        {isAddGames && <div ref={ref} />}
-    </>;
-});
+    return {ref}
+};
