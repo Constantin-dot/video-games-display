@@ -6,9 +6,7 @@ import { MainPage } from "./MainPage";
 export const MainPageContainer = () => {
 
     const dispatch = useDispatch();
-    const games = useSelector(state => state.games.games);
-    const isAddGames = useSelector(state => state.games.isAddGames);
-    const platformParants = useSelector(state => state.games.platformParants)
+    const {games, isAddGames, parentPlatforms, checkedParentPlatforms} = useSelector(state => state.games);
 
     const [isPlatformsVisible, setIsPlatformsVisible] = useState(false);
     const [lineValue, setLineValue] = useState("");
@@ -33,12 +31,16 @@ export const MainPageContainer = () => {
         setIsPlatformsVisible(!isPlatformsVisible);
     }, [isPlatformsVisible]);
 
-    const setPlatformParantChecked = (id, value) => {
-        dispatch(actions.setPlatformParantChecked(id, value))
-    }
+    const setParentPlatformChecked = (id, value) => {
+        dispatch(actions.setParentPlatformChecked(id, value));
+    };
 
-    const searchGamesHandler = (lineValue, platformParants) => {
-        dispatch(searchGames(lineValue, platformParants));
+    const chooseCheckedParentPlatformsHandler = () => {
+        dispatch(actions.chooseCheckedParentPlatforms(parentPlatforms, checkedParentPlatforms));
+    };
+
+    const searchGamesHandler = () => {
+        dispatch(searchGames(lineValue));
     };
 
     return <MainPage
@@ -49,8 +51,9 @@ export const MainPageContainer = () => {
         platformsVisibleHandler={platformsVisibleHandler}
         lineValue={lineValue}
         setLineValue={setLineValue}
-        platformParants={platformParants}
-        setPlatformParantChecked={setPlatformParantChecked}
+        parentPlatforms={parentPlatforms}
+        setParentPlatformChecked={setParentPlatformChecked}
+        chooseCheckedParentPlatformsHandler={chooseCheckedParentPlatformsHandler}
         searchGamesHandler={searchGamesHandler}
     />;
 };

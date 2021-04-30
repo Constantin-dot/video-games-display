@@ -1,15 +1,16 @@
 import React from "react";
 import { Game } from "../../main/ui/common/game/Game";
-import { MoreGames } from "../../main/ui/common/moreGames/MoreGames";
+import { GetMoreGamesHook } from "../../main/ui/common/hooks/GetMoreGamesHook";
 import { PlatformFiltering } from "../../main/ui/common/platformFiltering/PlatformFiltering";
 import { SearchLine } from "../../main/ui/common/searchLine/SearchLine";
 import classes from "./MainPage.module.scss";
 
 export const MainPage = React.memo(({games, isAddGames, getMoreGames, 
     isPlatformsVisible, platformsVisibleHandler, lineValue, 
-    setLineValue, setPlatformParantChecked, searchGamesHandler, platformParants}) => {
+    setLineValue, setParentPlatformChecked, searchGamesHandler, 
+    parentPlatforms, chooseCheckedParentPlatformsHandler}) => {
     
-    const {ref} = MoreGames({isAddGames, getMoreGames})
+    const {ref} = GetMoreGamesHook({isAddGames, getMoreGames})
 
     return <div className={classes.block}>
         <h1 className={classes.heading}>Game display</h1>
@@ -18,8 +19,9 @@ export const MainPage = React.memo(({games, isAddGames, getMoreGames,
                 ? <button onClick={platformsVisibleHandler} className={classes.platformsSpan}>Choose platforms</button>
                 : <PlatformFiltering 
                     platformsVisibleHandler={platformsVisibleHandler}
-                    setPlatformParantChecked={setPlatformParantChecked}
-                    platformParants={platformParants}
+                    setParentPlatformChecked={setParentPlatformChecked}
+                    chooseCheckedParentPlatformsHandler={chooseCheckedParentPlatformsHandler}
+                    parentPlatforms={parentPlatforms}
                 />
             }
             <SearchLine 

@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
-export const MoreGames = ({isAddGames, getMoreGames}) => {
+export const GetMoreGamesHook = ({isAddGames, getMoreGames}) => {
     const ref = useRef();
 
     useEffect( () => {
