@@ -23,6 +23,7 @@ export const GetMoreGamesHook = ({isAddGames, getMoreGames}) => {
 
         return () => {
             if (ref.current) {
+                // eslint-disable-next-line
                 observer.unobserve(ref.current);
             }
         };

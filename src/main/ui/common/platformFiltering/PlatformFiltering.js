@@ -10,21 +10,21 @@ export const PlatformFiltering = ({platformsVisibleHandler, parentPlatforms, set
     
     return <div className={classes.wrapper}>
         <div className={classes.allPlatforms}>
-        <div className={classes.block}>
-            {parentPlatforms.map(pp => <ParentPlatform
-                key={pp.id}
-                id={pp.id} 
-                checked={pp.isChecked} 
-                name={pp.name} 
-                setParentPlatformChecked={setParentPlatformChecked} 
-            />)}
+            <div className={classes.block}>
+                {parentPlatforms.map(pp => <ParentPlatform
+                    key={pp.id}
+                    id={pp.id} 
+                    checked={pp.isChecked} 
+                    name={pp.name} 
+                    setParentPlatformChecked={setParentPlatformChecked} 
+                />)}
+            </div>
+            <button 
+                onClick={buttonHandler}
+                className={classes.button}
+            >
+                &times;
+            </button>
         </div>
-        <button 
-            onClick={buttonHandler}
-            className={classes.button}
-        >
-            &times;
-        </button>
-    </div>
     </div>
 }

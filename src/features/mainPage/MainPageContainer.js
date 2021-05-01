@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchGames, searchGames, actions} from "../../main/bll/reducer";
+import { fetchGames, searchGames, actions, fetchOrderedGames} from "../../main/bll/reducer";
 import { MainPage } from "./MainPage";
 
 export const MainPageContainer = () => {
@@ -10,6 +10,7 @@ export const MainPageContainer = () => {
 
     const [isPlatformsVisible, setIsPlatformsVisible] = useState(false);
     const [lineValue, setLineValue] = useState("");
+    const [isSortingVisible, setIsSortingVisible] = useState(false);
     
 
     useEffect( () => {
@@ -43,6 +44,14 @@ export const MainPageContainer = () => {
         dispatch(searchGames(lineValue));
     };
 
+    const sortingVisibleHandler = () => {
+        setIsSortingVisible(!isSortingVisible);
+    };
+
+    const sortGames = (ordering) => {
+        fetchOrderedGames(ordering);
+    };
+
     return <MainPage
         games={games}
         isAddGames={isAddGames}
@@ -55,5 +64,8 @@ export const MainPageContainer = () => {
         setParentPlatformChecked={setParentPlatformChecked}
         chooseCheckedParentPlatformsHandler={chooseCheckedParentPlatformsHandler}
         searchGamesHandler={searchGamesHandler}
+        isSortingVisible={isSortingVisible}
+        sortingVisibleHandler={sortingVisibleHandler}
+        sortGames={sortGames}
     />;
 };

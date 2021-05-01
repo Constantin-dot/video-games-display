@@ -100,3 +100,13 @@ export const searchGames = (search) => {
         dispatch(actions.setGamesAfterSearching(res.data.results, 0, !!res.data.next));
     };
 };
+
+export const fetchOrderedGames = (ordering) => {
+    return async (dispatch, getState) => {
+        debugger
+        let res = await gameAPI.getOrderedGames(1, 100, ordering);
+        dispatch(actions.setGames(res.data.results, 1, !!res.data.next));
+        let games = getState().games.games;
+        console.log(games);
+    };
+};

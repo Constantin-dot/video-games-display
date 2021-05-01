@@ -7,11 +7,12 @@ const instance = axios.create({
 })
 
 export const gameAPI = {
-    getGames(page, page_size) {
+    getGames(page, page_size, ordering) {
         return instance.get(`games`, {
             params: {
                 page,
-                page_size
+                page_size,
+                ordering
             }
         })
     },
@@ -22,6 +23,15 @@ export const gameAPI = {
                 page_size,
                 search,
                 parent_platforms
+            }
+        })
+    },
+    getOrderedGames(page, page_size, ordering) {
+        return instance.get(`games`, {
+            params: {
+                page,
+                page_size,
+                ordering
             }
         })
     }
