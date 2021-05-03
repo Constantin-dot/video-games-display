@@ -1,13 +1,9 @@
-import { fetchOrderedGames } from "../../../bll/reducer";
 import classes from "./SortingPanel.module.scss"
 
 export const SortingPanel = ({sortingVisibleHandler, sortGames}) => {
 
     const inputHandler = (e) => {
-        debugger
-        // sortGames(e.currentTarget.value);
-        fetchOrderedGames(e.currentTarget.value);
-        sortingVisibleHandler();
+        sortGames(e.currentTarget.value);
     };
 
     return <div className={classes.wrapper}>

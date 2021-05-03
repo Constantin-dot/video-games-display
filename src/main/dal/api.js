@@ -17,21 +17,13 @@ export const gameAPI = {
         })
     },
     searchGames(page, page_size, search, parent_platforms) {
+        const parentPlatforms = parent_platforms ? {parent_platforms} : {}
         return instance.get(`games`, {
             params: {
                 page,
                 page_size,
                 search,
-                parent_platforms
-            }
-        })
-    },
-    getOrderedGames(page, page_size, ordering) {
-        return instance.get(`games`, {
-            params: {
-                page,
-                page_size,
-                ordering
+                ...parentPlatforms
             }
         })
     }

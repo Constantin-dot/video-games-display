@@ -49,7 +49,7 @@ export const MainPageContainer = () => {
     };
 
     const sortGames = (ordering) => {
-        fetchOrderedGames(ordering);
+        dispatch(fetchOrderedGames(ordering));
     };
 
     return <MainPage

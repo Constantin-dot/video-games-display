@@ -32,7 +32,7 @@ export const gameReducer = (state = initialState, action) => {
                 lastPage: action.payload.page,
                 isAddGames: action.payload.isAddGames
             };
-        case 'GAMES/SET_GAMES_AFTER_SEARCHING':
+        case 'GAMES/SET_GAMES_AFTER_SEARCHING_AND_SORTING':
             return {
                 ...state,
                 games: [...action.payload.games],
@@ -74,7 +74,7 @@ export const actions = {
     setGames: (games, page, isAddGames) => ({type: 'GAMES/SET_GAMES', payload: {
         games, page, isAddGames
     }}),
-    setGamesAfterSearching: (games, page, isAddGames) => ({type: 'GAMES/SET_GAMES_AFTER_SEARCHING', payload: {
+    setGamesAfterSearchingAndSorting: (games, page, isAddGames) => ({type: 'GAMES/SET_GAMES_AFTER_SEARCHING_AND_SORTING', payload: {
         games, page, isAddGames
     }}),
     setParentPlatformChecked: (id, value) => ({type: 'GAMES/SET_PARENT_PLATFORM_CHECKED', payload: {
@@ -97,16 +97,13 @@ export const searchGames = (search) => {
     return async (dispatch, getState) => {
         let parent_platforms = getState().games.checkedParentPlatforms;
         let res = await gameAPI.searchGames(1, 15, search, parent_platforms);
-        dispatch(actions.setGamesAfterSearching(res.data.results, 0, !!res.data.next));
+        dispatch(actions.setGamesAfterSearchingAndSorting(res.data.results, 0, !!res.data.next));
     };
 };
 
 export const fetchOrderedGames = (ordering) => {
-    return async (dispatch, getState) => {
-        debugger
-        let res = await gameAPI.getOrderedGames(1, 100, ordering);
-        dispatch(actions.setGames(res.data.results, 1, !!res.data.next));
-        let games = getState().games.games;
-        console.log(games);
+    return async (dispatch) => {
+        let res = await gameAPI.getGames(1, 100, ordering);
+        dispatch(actions.setGamesAfterSearchingAndSorting(res.data.results, 1, !!res.data.next));
     };
 };
