@@ -1,8 +1,15 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import classes from "./Game.module.scss";
 
 export const Game = React.memo((props) => {
-    return <div className={classes.block}>
+    const history = useHistory();
+
+    const CardRedirectHandler = () => {
+        history.push(`/game/${props.slug}`);
+    };
+
+    return <div className={classes.block} onClick={CardRedirectHandler}>
         <img 
             src={props.background}
             alt={'background'}
@@ -17,6 +24,5 @@ export const Game = React.memo((props) => {
                 {props.rating && <div className={classes.rating}>{props.rating}</div>}
             </div>
         </div>
-        {/* <NavLink to={'/game'} className={classes.link}>OPEN</NavLink> */}
     </div>
 })

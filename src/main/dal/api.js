@@ -26,5 +26,8 @@ export const gameAPI = {
                 ...parentPlatforms
             }
         })
+    },
+    getGameDetails(slug) {
+        return instance.get(`games/${slug}`)
     }
 }

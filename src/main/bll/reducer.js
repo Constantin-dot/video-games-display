@@ -20,7 +20,9 @@ const initialState = {
         {id: "13", name: "Neo Geo", isChecked: false},
         {id: "14", name: "Web", isChecked: false}
     ],
-    checkedParentPlatforms: ""
+    checkedParentPlatforms: "",
+    checkedGame: null,
+    checkedGameScreenshot: []
 };
 
 export const gameReducer = (state = initialState, action) => {
@@ -48,7 +50,7 @@ export const gameReducer = (state = initialState, action) => {
                     }
                     return pp
                 })
-            }
+            };
         case 'GAMES/CHOOSE_CHECKED_PARENT_PLATFORMS':
             let parentPlatforms = action.payload.parentPlatforms
             let checkedParentPlatforms = action.payload.checkedParentPlatforms
@@ -64,6 +66,12 @@ export const gameReducer = (state = initialState, action) => {
             return {
                 ...state,
                 checkedParentPlatforms: checkedParentPlatforms
+            };
+        case 'GAMES/SET_GAME_DETAILS':
+            debugger
+            return {
+                ...state,
+                checkedGame: action.payload
             }
         default: 
             return state
@@ -82,7 +90,8 @@ export const actions = {
     }}),
     chooseCheckedParentPlatforms: (parentPlatforms, checkedParentPlatforms) => ({type: 'GAMES/CHOOSE_CHECKED_PARENT_PLATFORMS', payload: {
         parentPlatforms, checkedParentPlatforms
-    }})
+    }}),
+    setGameDetails: (game) => ({type: 'GAMES/SET_GAME_DETAILS', payload: game})
 };
 
 export const fetchGames = () => {
@@ -90,6 +99,9 @@ export const fetchGames = () => {
         let lastPage = getState().games.lastPage;
         let res = await gameAPI.getGames(lastPage + 1, 15);
         dispatch(actions.setGames(res.data.results, lastPage + 1, !!res.data.next));
+
+        let games = getState().games.games;
+        console.log(games);
     };
 };
 
@@ -107,3 +119,11 @@ export const fetchOrderedGames = (ordering) => {
         dispatch(actions.setGamesAfterSearchingAndSorting(res.data.results, 1, !!res.data.next));
     };
 };
+
+export const getGameDetails = (slug) => {
+    return async (dispatch) => {
+        let res = await gameAPI.getGameDetails(slug);
+        console.log(res.data);
+        dispatch(actions.setGameDetails(res.data));
+    }
+}

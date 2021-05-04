@@ -57,6 +57,7 @@ export const MainPage = React.memo(({games, isAddGames, getMoreGames,
                     rating={g.metacritic}
                     name={g.name}
                     released={g.released}
+                    slug={g.slug}
                 />)
             }
             {isAddGames && <div ref={ref} style={{padding: "5px"}}/>}
