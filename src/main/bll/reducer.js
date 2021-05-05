@@ -22,7 +22,7 @@ const initialState = {
     ],
     checkedParentPlatforms: "",
     checkedGame: null,
-    checkedGameScreenshot: []
+    checkedGameScreenshots: []
 };
 
 export const gameReducer = (state = initialState, action) => {
@@ -68,13 +68,22 @@ export const gameReducer = (state = initialState, action) => {
                 checkedParentPlatforms: checkedParentPlatforms
             };
         case 'GAMES/SET_GAME_DETAILS':
-            debugger
             return {
                 ...state,
                 checkedGame: action.payload
-            }
+            };
+        case 'GAMES/SET_GAME_SCREENSHOTS':
+            return {
+                ...state,
+                checkedGameScreenshots: action.payload
+            };
+        case 'GAMES/CLEAR_GAME_SCREENSHOTS':
+            return {
+                ...state,
+                checkedGameScreenshots: []
+            };
         default: 
-            return state
+            return state;
     };
 };
 
@@ -91,7 +100,9 @@ export const actions = {
     chooseCheckedParentPlatforms: (parentPlatforms, checkedParentPlatforms) => ({type: 'GAMES/CHOOSE_CHECKED_PARENT_PLATFORMS', payload: {
         parentPlatforms, checkedParentPlatforms
     }}),
-    setGameDetails: (game) => ({type: 'GAMES/SET_GAME_DETAILS', payload: game})
+    setGameDetails: (game) => ({type: 'GAMES/SET_GAME_DETAILS', payload: game}),
+    setGameScreenshots: (screenshots) => ({type: 'GAMES/SET_GAME_SCREENSHOTS', payload: screenshots}),
+    clearGameScreenshots: () => ({type: 'GAMES/CLEAR_GAME_SCREENSHOTS'})
 };
 
 export const fetchGames = () => {
@@ -99,9 +110,6 @@ export const fetchGames = () => {
         let lastPage = getState().games.lastPage;
         let res = await gameAPI.getGames(lastPage + 1, 15);
         dispatch(actions.setGames(res.data.results, lastPage + 1, !!res.data.next));
-
-        let games = getState().games.games;
-        console.log(games);
     };
 };
 
@@ -123,7 +131,13 @@ export const fetchOrderedGames = (ordering) => {
 export const getGameDetails = (slug) => {
     return async (dispatch) => {
         let res = await gameAPI.getGameDetails(slug);
-        console.log(res.data);
         dispatch(actions.setGameDetails(res.data));
-    }
-}
+    };
+};
+
+export const getGameScreenshots = (slug) => {
+    return async (dispatch) => {
+        let res = await gameAPI.getGameScreenshots(slug);
+        dispatch(actions.setGameScreenshots(res.data.results));
+    };
+};
