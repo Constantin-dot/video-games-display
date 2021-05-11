@@ -1,4 +1,7 @@
 .wrapper {
+    @media screen and (max-width: 755px) {
+        left: 0;
+    }
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -12,7 +15,6 @@
     .panel {
         max-width: 400px;
         max-height: 400px;
-        
         position: relative;
         display: flex;
         justify-content: center;

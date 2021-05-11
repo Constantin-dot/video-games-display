@@ -1,4 +1,10 @@
 .block {
+    @media screen and (max-width: 930px) {
+        width: 600px;
+    };
+    @media screen and (max-width: 630px) {
+        width: 300px;
+    };
     width: 900px;
     display: flex;
     flex-direction: column;

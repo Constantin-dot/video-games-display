@@ -1,4 +1,10 @@
 .image {
+    @media screen and (max-width: 930px) {
+        max-width: 600px;
+    };
+    @media screen and (max-width: 630px) {
+        max-width: 300px;
+    };
     max-width: 900px;
     border-radius: 9px;
 }
