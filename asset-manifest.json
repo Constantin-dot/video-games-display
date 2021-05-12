@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/video-games-display/static/css/main.8e4e3acc.chunk.css",
-    "main.js": "/video-games-display/static/js/main.94a0b511.chunk.js",
-    "main.js.map": "/video-games-display/static/js/main.94a0b511.chunk.js.map",
+    "main.css": "/video-games-display/static/css/main.31ec9d6a.chunk.css",
+    "main.js": "/video-games-display/static/js/main.3c9b91e7.chunk.js",
+    "main.js.map": "/video-games-display/static/js/main.3c9b91e7.chunk.js.map",
     "runtime-main.js": "/video-games-display/static/js/runtime-main.b1fe2e57.js",
     "runtime-main.js.map": "/video-games-display/static/js/runtime-main.b1fe2e57.js.map",
-    "static/js/2.cdfd4f5a.chunk.js": "/video-games-display/static/js/2.cdfd4f5a.chunk.js",
-    "static/js/2.cdfd4f5a.chunk.js.map": "/video-games-display/static/js/2.cdfd4f5a.chunk.js.map",
+    "static/js/2.20a3d438.chunk.js": "/video-games-display/static/js/2.20a3d438.chunk.js",
+    "static/js/2.20a3d438.chunk.js.map": "/video-games-display/static/js/2.20a3d438.chunk.js.map",
     "static/js/3.63720dfb.chunk.js": "/video-games-display/static/js/3.63720dfb.chunk.js",
     "static/js/3.63720dfb.chunk.js.map": "/video-games-display/static/js/3.63720dfb.chunk.js.map",
     "index.html": "/video-games-display/index.html",
-    "static/css/main.8e4e3acc.chunk.css.map": "/video-games-display/static/css/main.8e4e3acc.chunk.css.map",
-    "static/js/2.cdfd4f5a.chunk.js.LICENSE.txt": "/video-games-display/static/js/2.cdfd4f5a.chunk.js.LICENSE.txt"
+    "static/css/main.31ec9d6a.chunk.css.map": "/video-games-display/static/css/main.31ec9d6a.chunk.css.map",
+    "static/js/2.20a3d438.chunk.js.LICENSE.txt": "/video-games-display/static/js/2.20a3d438.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.b1fe2e57.js",
-    "static/js/2.cdfd4f5a.chunk.js",
-    "static/css/main.8e4e3acc.chunk.css",
-    "static/js/main.94a0b511.chunk.js"
+    "static/js/2.20a3d438.chunk.js",
+    "static/css/main.31ec9d6a.chunk.css",
+    "static/js/main.3c9b91e7.chunk.js"
   ]
 }
