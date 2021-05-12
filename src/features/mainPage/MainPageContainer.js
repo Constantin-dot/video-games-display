@@ -11,7 +11,7 @@ export const MainPageContainer = () => {
     const [isPlatformsVisible, setIsPlatformsVisible] = useState(false);
     const [lineValue, setLineValue] = useState("");
     const [isSortingVisible, setIsSortingVisible] = useState(false);
-    
+    const [isFuncHeader, setIsFuncHeader] = useState(false);
 
     useEffect( () => {
         if(games.length) {
@@ -27,6 +27,10 @@ export const MainPageContainer = () => {
         }
         // eslint-disable-next-line
     }, [isAddGames]);
+
+    const funcHeaderHandler = () => {
+        setIsFuncHeader(!isFuncHeader);
+    };
 
     const platformsVisibleHandler = useCallback(() => {
         setIsPlatformsVisible(!isPlatformsVisible);
@@ -56,6 +60,8 @@ export const MainPageContainer = () => {
         games={games}
         isAddGames={isAddGames}
         getMoreGames={getMoreGames}
+        isFuncHeader={isFuncHeader}
+        funcHeaderHandler={funcHeaderHandler}
         isPlatformsVisible={isPlatformsVisible}
         platformsVisibleHandler={platformsVisibleHandler}
         lineValue={lineValue}

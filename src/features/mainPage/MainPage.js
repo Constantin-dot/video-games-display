@@ -10,46 +10,53 @@ export const MainPage = React.memo(({games, isAddGames, getMoreGames,
     isPlatformsVisible, platformsVisibleHandler, lineValue, 
     setLineValue, setParentPlatformChecked, searchGamesHandler, 
     parentPlatforms, chooseCheckedParentPlatformsHandler, isSortingVisible,
-    sortingVisibleHandler, sortGames}) => {
+    sortingVisibleHandler, sortGames, isFuncHeader, funcHeaderHandler}) => {
     
     const {ref} = GetMoreGamesHook({isAddGames, getMoreGames})
 
     return <div className={classes.block}>
         <div className={classes.blockWithHeadingAndSorting}>
             <h1 className={classes.heading}>Game display</h1>
-            <div className={classes.funcHeader}>
-                {!isPlatformsVisible 
-                    ? <button onClick={platformsVisibleHandler} className={classes.Button}>Choose platforms</button>
-                    : <PlatformFiltering 
-                        platformsVisibleHandler={platformsVisibleHandler}
-                        setParentPlatformChecked={setParentPlatformChecked}
-                        chooseCheckedParentPlatformsHandler={chooseCheckedParentPlatformsHandler}
-                        parentPlatforms={parentPlatforms}
+            {!isFuncHeader 
+                ? <button onClick={funcHeaderHandler} className={classes.buttonE}>&#9776;</button>
+                : <div className={classes.funcHeader}>
+                    {!isPlatformsVisible 
+                        ? <button onClick={platformsVisibleHandler} className={classes.Button}>Choose platforms</button>
+                        : <PlatformFiltering 
+                            platformsVisibleHandler={platformsVisibleHandler}
+                            setParentPlatformChecked={setParentPlatformChecked}
+                            chooseCheckedParentPlatformsHandler={chooseCheckedParentPlatformsHandler}
+                            parentPlatforms={parentPlatforms}
+                        />
+                    }
+                    <SearchLine 
+                        lineValue={lineValue} 
+                        setLineValue={setLineValue} 
                     />
-                }
-                <SearchLine 
-                    lineValue={lineValue} 
-                    setLineValue={setLineValue} 
-                />
-                <button 
-                    onClick={searchGamesHandler}
-                    className={classes.Button}
-                >
-                    Search
-                </button>
-                {!isSortingVisible
-                    ? <button 
-                        onClick={sortingVisibleHandler}
+                    <button 
+                        onClick={searchGamesHandler}
                         className={classes.Button}
                     >
-                        Sorting
+                        Search
                     </button>
-                    : <SortingPanel
-                        sortingVisibleHandler={sortingVisibleHandler}
-                        sortGames={sortGames}
-                    />
-                }
+                    {!isSortingVisible
+                        ? <button 
+                            onClick={sortingVisibleHandler}
+                            className={classes.Button}
+                        >
+                            Sorting
+                        </button>
+                        : <SortingPanel
+                            sortingVisibleHandler={sortingVisibleHandler}
+                            sortGames={sortGames}
+                        />
+                    }
+                    <button onClick={funcHeaderHandler} className={classes.buttonE}>
+                        &times;
+                    </button>
             </div>
+            }
+            
         </div>
         
         <div className={classes.gameBlock}>
