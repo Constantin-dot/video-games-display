@@ -9,30 +9,38 @@ export const SortingPanel = ({sortingVisibleHandler, sortGames}) => {
     return <div className={classes.wrapper}>
         <div className={classes.panel}>
             <div className={classes.itemsBlock}>
-                <input 
-                    type={"radio"}
-                    name={"sorting"}
-                    value={"rating"}
-                    onClick={inputHandler}
-                />Max rating
-                <input 
-                    type={"radio"}
-                    name={"sorting"}
-                    value={"-rating"}
-                    onClick={inputHandler}
-                />Min rating
-                <input 
-                    type={"radio"}
-                    name={"sorting"}
-                    value={"released"}
-                    onClick={inputHandler}
-                />New
-                <input 
-                    type={"radio"}
-                    name={"sorting"}
-                    value={"-released"}
-                    onClick={inputHandler}
-                />Old
+                <div className={classes.item}>
+                    <input 
+                        type={"radio"}
+                        name={"sorting"}
+                        value={"rating"}
+                        onClick={inputHandler}
+                    />Max rating
+                </div>
+                <div className={classes.item}>
+                    <input 
+                        type={"radio"}
+                        name={"sorting"}
+                        value={"-rating"}
+                        onClick={inputHandler}
+                    />Min rating
+                </div>
+                <div className={classes.item}>
+                    <input 
+                        type={"radio"}
+                        name={"sorting"}
+                        value={"released"}
+                        onClick={inputHandler}
+                    />New
+                </div>
+                <div className={classes.item}>
+                    <input 
+                        type={"radio"}
+                        name={"sorting"}
+                        value={"-released"}
+                        onClick={inputHandler}
+                    />Old
+                </div>
             </div>
             <button 
                 onClick={sortingVisibleHandler}

@@ -5,7 +5,8 @@
     @media screen and (max-width: 630px) {
         width: 300px;
     };
-    width: 900px;
+    margin: 0 auto;
+    max-width: 900px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,7 +20,11 @@
     }
 
     .link {
-        padding: 2px 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        padding: 2px 8px;
         color: #ffffff;
         text-decoration: none;
         background-color: #373737;

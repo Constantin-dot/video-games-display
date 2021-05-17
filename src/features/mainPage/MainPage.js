@@ -58,10 +58,10 @@ export const MainPage = React.memo(({games, isAddGames, getMoreGames,
             }
             
         </div>
-        
         <div className={classes.gameBlock}>
-            {
-                games.map(g => <Game
+            { !games.length 
+                ? `Something goes wrong...` 
+                : games.map(g => <Game
                     key={g.id}
                     background={g.background_image}
                     rating={g.metacritic}

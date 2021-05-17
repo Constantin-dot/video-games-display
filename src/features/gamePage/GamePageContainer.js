@@ -12,10 +12,18 @@ export const GamePageContainer = () => {
     const checkedGameScreenshots = useSelector(state => state.games.checkedGameScreenshots);
 
     useEffect( () => {
-        dispatch(actions.clearGameScreenshots());
-        dispatch(getGameScreenshots(slug));
-        dispatch(getGameDetails(slug));
-    }, [slug, dispatch])
+        let cleanupFunction = false;
+
+        if (!cleanupFunction) {
+            dispatch(actions.clearGameScreenshots());
+            dispatch(getGameScreenshots(slug));
+            dispatch(getGameDetails(slug));
+        }
+
+        return () => cleanupFunction = true;
+        
+        // eslint-disable-next-line
+    }, [slug])
 
     if (!checkedGame || !checkedGameScreenshots.length) {
         return <div>Game loading...</div>
